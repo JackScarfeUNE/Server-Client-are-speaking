@@ -84,7 +84,7 @@ public class WordleGame {
         if (inputvalue.equals(answer)) {
             renderingCommands.add(new JsonObject().put("command", "Correct!").put("guess", inputvalue));
         } else {
-            renderingCommands.add(new JsonObject().put("command", "Incorrect!").put("guess", inputvalue));
+            renderingCommands.add(new JsonObject().put("command", "Incorrect!").put("guess", "wrong"));
         }
         
         return new RenderingPackage(this.gameMetadata(), renderingCommands);
@@ -113,43 +113,43 @@ public class WordleGame {
     }
 
     
-    // String list_file = "javaprojects/server/src/main/resources/target.txt";
+    String list_file = "javaprojects/server/src/main/resources/target.txt";
 
-    // String answer = getRandomWord();
+    String answer = getRandomWord();
 
-    // public String getRandomWord() {
-    //     List<String> word_list = readDictionary(list_file);
-    //     Random rand = new Random(); //instance of random class
-    //     int upperbound = word_list.size();
-    //     // generate random values from 0 to arrayList size
-    //     int int_random = rand.nextInt(upperbound);
-    //     return word_list.get(int_random);
-    // }
+    public String getRandomWord() {
+        List<String> word_list = readDictionary(list_file);
+        Random rand = new Random(); //instance of random class
+        int upperbound = word_list.size();
+        // generate random values from 0 to arrayList size
+        int int_random = rand.nextInt(upperbound);
+        return word_list.get(int_random);
+    }
 
-    // public List<String> readDictionary(String fileName) {
+    public List<String> readDictionary(String fileName) {
 
-    //     List<String> wordList = new ArrayList<>();
+        List<String> wordList = new ArrayList<>();
 
-    //     try {
-    //         // Open and read the dictionary file
-    //         InputStream in = getClass().getClassLoader().getResourceAsStream(fileName);
-    //         assert in != null;
-    //         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-    //         String strLine;
+        try {
+            // Open and read the dictionary file
+            InputStream in = getClass().getClassLoader().getResourceAsStream(fileName);
+            assert in != null;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String strLine;
 
-    //         //Read file line By line
-    //         while ((strLine = reader.readLine()) != null) {
-    //             wordList.add(strLine);
-    //         }
+            //Read file line By line
+            while ((strLine = reader.readLine()) != null) {
+                wordList.add(strLine);
+            }
 
-    //         //Close the input stream
-    //         in.close();
+            //Close the input stream
+            in.close();
 
-    //     } catch (Exception e) {//Catch exception if any
-    //         System.err.println("Error: " + e.getMessage());
-    //     }
-    //     return wordList;
-    // }
+        } catch (Exception e) {//Catch exception if any
+            System.err.println("Error: " + e.getMessage());
+        }
+        return wordList;
+    }
 
     
     
